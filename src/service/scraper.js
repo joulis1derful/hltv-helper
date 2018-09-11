@@ -1,7 +1,7 @@
 const cheerio = require('cheerio')
 
 const send = require('./mailSender')
-const browser = require('./browser')
+const browser = require('../shared/browser')
 
 const scrapeScorelines = async function() {
     const url = 'https://www.hltv.org/results'

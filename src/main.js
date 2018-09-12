@@ -1,5 +1,7 @@
 const express = require('express')
-const run = require('./scraper/scraper')
+const run = require('./hltv-scraper/scraper')
+
+const APP_PORT = process.env.APP_PORT
 
 const app = express()
 
@@ -17,7 +19,7 @@ app.get('/rankings', async (req, res) => {
     res.send('Here they are!')
 })
 
-app.listen(30003, (err) => {
+app.listen(APP_PORT, (err) => {
     console.log('Example app listening on port 30003')
 })
 

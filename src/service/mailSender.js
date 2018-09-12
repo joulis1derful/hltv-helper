@@ -2,7 +2,7 @@ const nodemailer = require('nodemailer')
 const fs = require('fs')
 const base64 = require('base-64')
 
-const sendEmail = function(data) {
+const sendEmail = (data) => {
     const credentials_file = fs.readFileSync('resources/client_id.json')
     const serverConfig = JSON.parse(credentials_file)
 

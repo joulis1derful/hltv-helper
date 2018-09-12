@@ -1,5 +1,5 @@
 const express = require('express')
-const run = require('./src/service/scraper')
+const run = require('./scraper/scraper')
 
 const app = express()
 

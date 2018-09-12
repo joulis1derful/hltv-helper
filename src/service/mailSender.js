@@ -1,26 +1,26 @@
 const nodemailer = require('nodemailer')
-const fs = require('fs')
 const base64 = require('base-64')
 
-const sendEmail = (data) => {
-    const credentials_file = fs.readFileSync('resources/client_id.json')
-    const serverConfig = JSON.parse(credentials_file)
+const USERNAME = process.env.USERNAME
+const CLIENT_ID = process.env.CLIENT_ID
+const CLIENT_SECRET = process.env.CLIENT_SECRET
+const REFRESH_TOKEN = process.env.REFRESH_TOKEN
 
+const sendEmail = (data) => {
     return new Promise((resolve, reject) => {
         const transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {
                 type: 'OAuth2',
-                user: serverConfig.username,
-                clientId: serverConfig.web.client_id,
-                clientSecret: serverConfig.web.client_secret,
-                refreshToken: serverConfig.web.refresh_token,
-                // accessToken: serverConfig.gmail.access_token,
+                user: USERNAME,
+                clientId: CLIENT_ID,
+                clientSecret: CLIENT_SECRET,
+                refreshToken: REFRESH_TOKEN,
             },
         })
 
         const mailOptions = {
-            from: `HLTV Stats <${serverConfig.username}@gmail.com>`,
+            from: `HLTV Stats <${USERNAME}@gmail.com>`,
             to: 'antonhuzhov@gmail.com',
             subject: 'Featured results',
             text: data.join('\n')

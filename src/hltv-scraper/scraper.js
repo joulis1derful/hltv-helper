@@ -3,8 +3,7 @@ const cheerio = require('cheerio')
 const send = require('../service/mailSender')
 const browser = require('../shared/browser')
 
-const scrapeScorelines = async () => {
-    const url = 'https://www.hltv.org/results'
+const scrapeScorelines = async (url) => {
     const html = await browser.get(url)
 
     const $ = cheerio.load(html)
@@ -25,8 +24,7 @@ const scrapeScorelines = async () => {
         .catch(err => console.log('Error has occured ' + err))
 }
 
-const scrapeTeamsRanking = async () => {
-    const url = 'https://www.hltv.org/ranking/teams';
+const scrapeTeamsRanking = async (url) => {
     const html = await browser.get(url)
 
     const $ = cheerio.load(html)

@@ -6,7 +6,7 @@ const CLIENT_ID = process.env.CLIENT_ID
 const CLIENT_SECRET = process.env.CLIENT_SECRET
 const REFRESH_TOKEN = process.env.REFRESH_TOKEN
 
-const sendEmail = (data) => {
+const sendEmail = (data, receiver) => {
     return new Promise((resolve, reject) => {
         const transporter = nodemailer.createTransport({
             service: 'gmail',
@@ -21,7 +21,7 @@ const sendEmail = (data) => {
 
         const mailOptions = {
             from: `HLTV Stats <${USERNAME}@gmail.com>`,
-            to: 'antonhuzhov@gmail.com',
+            to: receiver,
             subject: 'Featured results',
             text: data.join('\n')
         }

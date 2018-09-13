@@ -10,12 +10,14 @@ app.get('/', (req, res) => {
 })
 
 app.get('/scores', async (req, res) => {
-    await run.scores()
+    const url = 'http://hltv.org'
+    await run.scores(url)
     res.send('Sent')
 })
 
 app.get('/rankings', async (req, res) => {
-    await run.rankings()
+    const url = 'http://hltv.org'
+    await run.rankings(url)
     res.send('Here they are!')
 })
 

@@ -1,27 +1,27 @@
 const express = require('express')
+const dotenv = require('dotenv').config()
 const run = require('./hltv-scraper/scraper')
 
 const APP_PORT = process.env.APP_PORT
+const SCRAPE_URL = process.env.SCRAPE_URL
 
 const app = express()
 
 app.get('/', (req, res) => {
-  res.send('Hello World!')
+  res.sendStatus(res.statusCode)
 })
 
 app.get('/scores', async (req, res) => {
-    const url = 'http://hltv.org'
-    await run.scores(url)
+    await run.scores(SCRAPE_URL)
     res.send('Sent')
 })
 
 app.get('/rankings', async (req, res) => {
-    const url = 'http://hltv.org'
-    await run.rankings(url)
-    res.send('Here they are!')
+    await run.rankings(SCRAPE_URL)
+    res.sendStatus(res.statusCode)
 })
 
 app.listen(APP_PORT, (err) => {
-    console.log('Example app listening on port 30003')
+    console.log(`Example app listening on port ${APP_PORT}`)
 })
 

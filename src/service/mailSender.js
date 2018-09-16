@@ -1,5 +1,6 @@
 const nodemailer = require('nodemailer')
 const base64 = require('base-64')
+const dotenv = require('dotenv').config()
 
 const USERNAME = process.env.USERNAME
 const CLIENT_ID = process.env.CLIENT_ID
@@ -20,7 +21,7 @@ const sendEmail = (data, receiver) => {
         })
 
         const mailOptions = {
-            from: `HLTV Stats <${USERNAME}@gmail.com>`,
+            from: `HLTV Stats <hltv-helper@gmail.com>`,
             to: receiver,
             subject: 'Featured results',
             text: data.join('\n')

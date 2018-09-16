@@ -3,6 +3,9 @@ const cheerio = require('cheerio')
 const send = require('../service/mailSender')
 const browser = require('../shared/browser')
 
+// TODO replace with the real one (along with user data)
+const receiverEmail = 'test@gmail.com'
+
 const scrapeScorelines = async (url) => {
     const html = await browser.get(url)
 
@@ -19,9 +22,9 @@ const scrapeScorelines = async (url) => {
         }
     })
 
-    send.sendEmail(results)
+     send.sendEmail(results, receiverEmail)
         .then(data => console.log(data))
-        .catch(err => console.log('Error has occured ' + err))
+        .catch(err => console.log(err))
 }
 
 const scrapeTeamsRanking = async (url) => {
@@ -37,9 +40,9 @@ const scrapeTeamsRanking = async (url) => {
         teamList.push(`#${position} - ${name}`)
     })
 
-    send.sendEmail(teamList)
+    send.sendEmail(teamList, receiverEmail)
         .then(data => console.log(data))
-        .catch(err => console.log('Error has occured ' + err))
+        .catch(err => console.log(err))
 }
 
 module.exports = {

@@ -1,5 +1,6 @@
 const express = require('express')
 const dotenv = require('dotenv').config()
+const path = require('path')
 const run = require('./hltv-scraper/scraper')
 
 const APP_PORT = process.env.APP_PORT
@@ -7,8 +8,8 @@ const SCRAPE_URL = process.env.SCRAPE_URL
 
 const app = express()
 
-app.get('/', (req, res) => {
-  res.sendStatus(res.statusCode)
+app.get('/', express.static(path.join(__dirname, "../../frontend")), (req, res) => {
+  res.sendFile(path.join(`index.html`))
 })
 
 app.get('/scores', async (req, res) => {

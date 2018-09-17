@@ -11,7 +11,7 @@
   "author": "",
   "license": "ISC",
   "_moduleAliases": {
-    "@root": "."
+    "#root": "."
   },
   "dependencies": {
     "base-64": "^0.1.0",
@@ -21,7 +21,9 @@
     "module-alias": "^2.1.0",
     "nodemailer": "^4.6.7",
     "path": "^0.12.7",
-    "puppeteer": "^1.5.0"
+    "puppeteer": "^1.5.0",
+    "vue": "^2.5.17",
+    "vue-router": "^3.0.1"
   },
   "devDependencies": {
     "jest": "^23.3.0",

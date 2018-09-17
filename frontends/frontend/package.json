@@ -1,0 +1,21 @@
+{
+  "name": "hltv-parser",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "clean": "rm -rf node_modules/",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node main.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^6.0.0",
+    "vue": "^2.5.17"
+  },
+  "devDependencies": {
+    "jest": "^23.3.0",
+    "nodemon": "^1.17.5"
+  }
+}

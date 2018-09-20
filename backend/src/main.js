@@ -11,6 +11,8 @@ const app = express()
 
 // mongoose.connect('mongodb://localhost/test')
 
+const leetCode = "https://leetcode.com/problems/3sum/"
+
 app.get('/', express.static(path.join(__dirname, "../../frontend")), (req, res) => {
   // res.sendFile(path.join(`index.html`))
 
@@ -27,7 +29,7 @@ app.get('/rankings', async (req, res) => {
 })
 
 app.get('/calc', (req, res) => {
-    const array = threeSum([0,0,0,0])
+    const array = threeSum([[-4,-2,6],[-4,0,4],[-4,1,3],[-4,2,2],[-2,-2,4],[-2,-2,4],[-2,0,2]])
     console.log(array)
     res.sendStatus(res.statusCode)
 })

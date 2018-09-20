@@ -1,5 +1,4 @@
 const nodemailer = require('nodemailer')
-const base64 = require('base-64')
 const dotenv = require('dotenv').config()
 
 const USERNAME = process.env.USERNAME

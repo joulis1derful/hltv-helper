@@ -34,6 +34,14 @@ app.get('/calc', (req, res) => {
     res.sendStatus(res.statusCode)
 })
 
+app.get('/ll', (req, res) => {
+    // const t = reverse(900000)
+    // console.log(t)
+    const result = longestCommonPrefix(["flower","flow","flight"])
+    console.log(result)
+    res.sendStatus(res.statusCode)
+})
+
 app.listen(APP_PORT, (err) => {
     console.log(`Example app listening on port ${APP_PORT}`)
 })
@@ -83,3 +91,85 @@ var sortIndices = function(arr) {
     }
     return arr
 }
+
+
+function ListNode(val) {
+    this.val = val;
+    this.next = null;
+}
+
+const addTwoNumbers = function(l1, l2) {
+    let l3 = new ListNode(0)
+    while(l1.next !== null || l2.next !== null) {
+        l3.val = l1.val + l2.val
+        l1.next = l1.next.next
+        l2.next = l2.next.next
+        l3.next = l3.next.next
+    }
+    return l3
+};
+
+/**
+ * @param {number} x
+ * @return {number}
+ */
+const reverse = function(x) {
+    if(x < -2147483648 || x > 2147483647) {
+        return 0
+    }
+    const s = x.toString()
+    if(s.length < 2) {
+        return parseInt(s)
+    }
+    const splitString = s.split("")
+    let reversed = splitString.reverse()
+    console.log(reversed)
+    while (reversed[0] === '0') {
+        reversed.splice(0, 1)
+        console.log(reversed)
+    }
+    if (reversed[reversed.length - 1] === '-') {
+        reversed.splice(reversed.length - 1, 1)
+        const num = parseInt(reversed.join(""))
+        return -num
+    }
+
+    return parseInt(reversed.join(""))
+};
+
+var findCommon = function(array, element) {
+    for(var i = 1; i < array.length; i++) {
+        if(array[0][element] !== array[i][element]) {
+            return false
+        }
+        console.log("word # " + i + " letter # " + element)
+    }
+    return true
+}
+
+var findLowestArray = function(array) {
+    var amountElements = []
+    for(var i = 0; i < array.length; i++) {
+        amountElements.push(array[i].length)
+    }
+    return Math.min(...amountElements)
+}
+
+var longestCommonPrefix = function(strs) {
+    if (strs.length < 1) {
+        return ""
+    }
+    var common = []
+    var isCommon = findCommon(strs, 0)
+    if(!isCommon) {
+        return ""
+    }
+    common.push(strs[0][0])
+    var minLength = findLowestArray(strs)
+    for(var i = 1; i < minLength; i++) {
+        if(findCommon(strs, i)) {
+            common.push(strs[0][i])
+        }
+    }
+    return common
+};

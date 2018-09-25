@@ -4,79 +4,88 @@
     <h2>Essential Links</h2>
     <ul>
       <li>
+      <img src="../assets/team_logo/Astralis.svg"/>
         <a
           href="https://vuejs.org"
           target="_blank"
         >
-          Core Docs
+          Astralis
         </a>
       </li>
       <li>
+      <img src="../assets/team_logo/Navi.svg"/>
         <a
           href="https://forum.vuejs.org"
           target="_blank"
         >
-          Forum
+          Na'Vi
         </a>
       </li>
       <li>
+      <img src="../assets/team_logo/Faze.svg"/>
         <a
           href="https://chat.vuejs.org"
           target="_blank"
         >
-          Community Chat
+          Faze clan
         </a>
       </li>
       <li>
+      <img src="../assets/team_logo/Liquid.svg"/>
         <a
           href="https://twitter.com/vuejs"
           target="_blank"
         >
-          Twitter
+          Team Liquid
         </a>
       </li>
       <br>
       <li>
+      <img src="../assets/team_logo/MIBR.svg"/>
         <a
           href="http://vuejs-templates.github.io/webpack/"
           target="_blank"
         >
-          Docs for This Template
+          MIBR
         </a>
       </li>
     </ul>
-    <h2>Ecosystem</h2>
+
     <ul>
       <li>
+      <img src="../assets/team_logo/Mousesports.svg"/>
         <a
           href="http://router.vuejs.org/"
           target="_blank"
         >
-          vue-router
+          Mousesports
         </a>
       </li>
       <li>
+      <img src="../assets/team_logo/North.svg"/>
         <a
           href="http://vuex.vuejs.org/"
           target="_blank"
         >
-          vuex
+          North
         </a>
       </li>
       <li>
+      <img src="../assets/team_logo/Heroic.svg"/>
         <a
           href="http://vue-loader.vuejs.org/"
           target="_blank"
         >
-          vue-loader
+          Heroic
         </a>
       </li>
       <li>
+      <img src="../assets/team_logo/G2.svg"/>
         <a
           href="https://github.com/vuejs/awesome-vue"
           target="_blank"
         >
-          awesome-vue
+          G2
         </a>
       </li>
     </ul>
@@ -88,7 +97,7 @@ export default {
   name: 'HelloWorld',
   data() {
     return {
-      msg: 'Welcome to Your Vue.js App',
+      msg: 'Choose teams you want to follow on',
     };
   },
 };

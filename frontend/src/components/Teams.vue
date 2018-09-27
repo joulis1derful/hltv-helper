@@ -58,7 +58,7 @@
         <label>NIP</label>
       </li>
     </ul>
-    <button v-on:click="selectChecked()" class="send">Continue</button>
+    <button v-on:click="selectChecked()" class="send"><router-link to="players">Continue</router-link></button>
   </div>
 </template>
 
@@ -80,10 +80,11 @@ export default {
           teamsToContinueWith.push(inputElements[i].value)
         }
       }
-      this.fireMe(teamsToContinueWith)
+      // this.fireMe(teamsToContinueWith)
     },
     fireMe: function(teams) {
-      // TODO send teams as body in POST request to backend
+      /* TODO send teams as body in POST request to backend
+         and/or move it to service/another component */
       const options = {
         headers: {
           'Access-Control-Allow-Origin': '*',
@@ -96,6 +97,9 @@ export default {
           console.log(response)
         })
         .catch(error => console.log(error));
+
+      document.location.href = '/players'
+
     }
   }
 };

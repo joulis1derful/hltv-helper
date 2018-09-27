@@ -1,6 +1,5 @@
 const express = require('express')
 const dotenv = require('dotenv').config()
-const path = require('path')
 const run = require('./hltv-scraper/scraper')
 const mongoose = require('mongoose')
 
@@ -9,10 +8,23 @@ const SCRAPE_URL = process.env.SCRAPE_URL
 
 const app = express()
 
-mongoose.connect('mongodb://localhost/test')
+// mongoose.connect('mongodb://localhost/test')
 
-app.get('/', express.static(path.join(__dirname, "../../frontend")), (req, res) => {
-  res.sendFile(path.join(`index.html`))
+app.use((req, res, next) => {
+    res.append('Access-Control-Allow-Origin', ['*'])
+    res.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE')
+    res.append('Access-Control-Allow-Headers', 'Content-Type')
+    next()
+})
+
+app.get('/', (req, res) => {
+  const list = new LinkedList(3)
+  list.addAtHead(5).addAtHead(1).addAtHead(4)
+  console.log(list.get(0))
+    console.log(list.get(1))
+    console.log(list.get(2))
+    console.log(list.get(3))
+  res.sendStatus(res.statusCode)
 })
 
 app.get('/scores', async (req, res) => {
@@ -29,3 +41,36 @@ app.listen(APP_PORT, (err) => {
     console.log(`Example app listening on port ${APP_PORT}`)
 })
 
+class LinkedList {
+    constructor(value) {
+        this.head = {
+            value,
+            next: null
+        }
+        this.length = 1
+    }
+
+    addAtHead(value) {
+        const newNode = { value }
+        newNode.next = this.head
+        this.head = newNode
+        this.length++
+
+        return this
+    }
+
+    get(index) {
+        if (index < 0 || index > 1000) {
+            return -1
+        }
+        let current = this.head
+        let counter = 0
+        while (current) {
+            if (index === counter) {
+                return current.value
+            }
+            current = current.next
+            counter++
+        }
+    }
+}

@@ -1,15 +1,11 @@
-const puppeteer = require('puppeteer')
+const request = require('request-promise-native')
 
 const get = async (url) => {
-    const browser = await puppeteer.launch()
-    const page = await browser.newPage()
-    await page.goto(url)
-    const html = await page.evaluate(() => {
-        return document.body.innerHTML
-    })
-    await browser.close()
-
-    return html
+    return request(url)
+        .then((response) => {
+            return response
+        })
+        .catch((err) => console.log(err))
 }
 
 module.exports = {
